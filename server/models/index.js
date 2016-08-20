@@ -1,4 +1,4 @@
-var db = require('../db');
+var db = require('../db/index.js');
 var mysql = require('mysql');
 
 
@@ -6,34 +6,59 @@ var mysql = require('mysql');
 module.exports = {
   messages: {
     get: function (req, callback) {
+
       // Use ORM (Object Relational Mapping?) to communicate with DB
       db.dbConnection.connect();
       
       // create mysql query string
-      var queryString = 'SELECT * FROM messages';
+      var queryString = 'SELECT * FROM messages;';
 
-      dbConnection.query(
+      db.dbConnection.query(
         queryString, 
-        // values, 
+        // [], 
         function(err, rows, fields) {
           if (err) {
             console.log('err: ', err); 
             throw err; 
           }
-          console.log('rows: ', rows);
-          console.log('fields: ', fields);
+          callback(JSON.stringify(rows));
         }   
       );
-      // callback(data);
+      // db.dbConnection.end();
 
     }, // a function which produces all the messages
-    post: function () {} // a function which can be used to insert a message into the database
+    post: function () {
+
+    } // a function which can be used to insert a message into the database
   },
 
   users: {
     // Ditto as above.
-    get: function () {},
-    post: function () {}
+    get: function () {
+
+      // Use ORM (Object Relational Mapping?) to communicate with DB
+      db.dbConnection.connect();
+      
+      // create mysql query string
+      var queryString = 'SELECT * FROM users;';
+
+      db.dbConnection.query(
+        queryString, 
+        // [], 
+        function(err, rows, fields) {
+          if (err) {
+            console.log('err: ', err); 
+            throw err; 
+          }
+          callback(JSON.stringify(rows));
+        }   
+      );
+      // db.dbConnection.end();
+
+    },
+    post: function () {
+
+    }
   }
 };
 
