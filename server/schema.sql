@@ -1,12 +1,20 @@
-CREATE DATABASE chat;
+-- ---
+-- Globals
+-- ---
 
-USE chat;
+-- SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+-- SET FOREIGN_KEY_CHECKS=0;
+
+-- ---
+-- Table 'messages'
+-- 
+-- ---
 
 DROP TABLE IF EXISTS `messages`;
     
 CREATE TABLE `messages` (
   `objectId` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `text` MEDIUMTEXT NULL DEFAULT NULL,
+  `text` MEDIUMTEXT(255) NULL DEFAULT NULL,
   `createdAt` TIMESTAMP NULL DEFAULT NULL,
   `id_rooms` INTEGER NULL DEFAULT NULL,
   `id_users` INTEGER NULL DEFAULT NULL,
@@ -64,27 +72,3 @@ ALTER TABLE `messages` ADD FOREIGN KEY (id_users) REFERENCES `users` (`id`);
 -- ('','');
 -- INSERT INTO `rooms` (`id`,`roomname`) VALUES
 -- ('','');
-);
-
-/* Create other tables and define schemas for them here! */
-
-
-
--- CREATE TABLE messages (
-  /* Describe your table here.*/
-
-/*  Execute this file from the command line by typing:
- *    mysql -u root < server/schema.sql
- *  to create the database and the tables.*/
-
--- ---
--- Globals
--- ---
-
--- SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
--- SET FOREIGN_KEY_CHECKS=0;
-
--- ---
--- Table 'messages'
--- 
--- ---
