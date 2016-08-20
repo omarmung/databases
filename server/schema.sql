@@ -1,4 +1,12 @@
--- ---
+DROP DATABASE chat;
+
+CREATE DATABASE chat;
+  
+USE chat;
+
+-- 
+
+--
 -- Globals
 -- ---
 
@@ -14,7 +22,7 @@ DROP TABLE IF EXISTS `messages`;
     
 CREATE TABLE `messages` (
   `objectId` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `text` MEDIUMTEXT(255) NULL DEFAULT NULL,
+  `text` MEDIUMTEXT NULL DEFAULT NULL,
   `createdAt` TIMESTAMP NULL DEFAULT NULL,
   `id_rooms` INTEGER NULL DEFAULT NULL,
   `id_users` INTEGER NULL DEFAULT NULL,

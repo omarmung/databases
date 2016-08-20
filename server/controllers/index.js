@@ -14,7 +14,15 @@ module.exports = {
       });
     }, // a function which handles a get request for all messages
     post: function (req, res) {
+      console.log('CONTROLLER PRE-REQUEST - REQ DATA: '); // , req);
 
+      models.messages.post(req, function(data) {
+        // console.log('CONTROLLER POST - REQ DATA: ', req);
+        // TODO
+          // add headers
+          // res.writeHead(200, headers);
+        res.end();
+      });
     } // a function which handles posting a message to the database
   },
 
